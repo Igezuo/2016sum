@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="./public/cikonss/cikonss.css" />
+	   <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+   <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+	<title>文件管理系统</title>
+</head>
+<body>
+<div class="container">
+<table class="table">
+   		<caption>文件管理系统</caption>
+   		<thead>
+   			<tr>
+   				<td>当前目录:{$current|iconv='gb2312','utf-8',###}</td>
+   			</tr>
+		</thead>
+			<tr>
+				<td>名称</td>
+			</tr>
+
+			<tr>
+				<td>
+					<span class="icon icon-small"><span class="icon-folder"></span></span>
+					&nbsp;
+					<a href="./index.php?path={$current|getLastDir}">..</a>
+				</td>
+			</tr>
+		<tbody>
+			<volist name="dir['dir']" id="dirval" >
+			<tr>
+				<td>
+					<span class="icon icon-small"><span class="icon-folder"></span></span>
+					&nbsp;
+					<a href="./index.php?path={$dirval|getDirPath=$current,###}" id="openFile" attr-name="/">{$dirval|iconv='gb2312','utf-8',###}</a>
+				</td>
+			</tr>
+
+			</volist>
+			<volist name="dir['file']" id="fileval" >
+			<tr>
+				<td>
+					<span class="icon icon-small"><span class="icon-file"></span></span>
+						&nbsp;
+					<span>{$fileval|iconv='gb2312','utf-8',###}</span>
+					&nbsp;	
+					<a href="./admin.php?c=index&a=downLoad&filename={$fileval|getDirPath=$current,###}" id="file-delete" attr-message="下载"><span class="glyphicon glyphicon-download"></span></a>
+					&nbsp;
+				</td>
+			</tr>
+			</volist>
+		</tbody>
+
+</table>
+</div>
+<!-- <script src="/Public/js/admin/common.js"></script> -->
+</body>
+</html>
+
+

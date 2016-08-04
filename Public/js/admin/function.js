@@ -1,0 +1,5 @@
+var func= {
+	update : function(){
+
+	}
+}
